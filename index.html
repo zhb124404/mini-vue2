@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>mini vue</title>
+  <script src="./vue2.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <input type="text" v-model="msg">
+    <input type="text" v-model="name">
+    <button @click="fn">打印vm</button>
+    <div v-text="msg"></div>
+    <div>msg:{{msg}} - {{name}}-{{name}}</div>
+    <div v-html="domEl"></div>
+  </div>
+  </div>
+  <script>
+    const vm = new Vue({
+      el: '#app',
+      data() {
+        return {
+          name: 'tom',
+          msg: 'this is a test msg! ',
+          domEl: '<b>bold text text</b>'
+        }
+      },
+      methods: {
+        alert() {
+          alert(this.msg)
+        },
+        fn() {
+          this.alert = function () {
+            alert(this.domEl)
+          }
+          this.alert()
+          console.log(this)
+        }
+      }
+    })
+  </script>
+</body>
+
+</html>
